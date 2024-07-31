@@ -1,5 +1,6 @@
 from pathlib import Path
 import os
+import shlex
 import subprocess
 
 from IPython.core.magic import Magics
@@ -65,7 +66,7 @@ class HeirOptMagic(Magics):
         """
         print("Running heir-opt...")
         completed_process = subprocess.run(
-            [self.binary_path, line], input=cell, text=True
+            [self.binary_path] + shlex.split(line), input=cell, text=True
         )
         if completed_process.returncode != 0:
             print("Error running heir-opt")
