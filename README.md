@@ -8,6 +8,15 @@ Uses the [nightly HEIR build](https://github.com/google/heir/releases/tag/nightl
 
 ## Usage
 
+Load Jupyter:
+
+```bash
+python -m venv venv
+pip install -r requirements.txt
+source venv/bin/activate
+jupyter notebook
+```
+
 In Jupyter:
 
 ```python
