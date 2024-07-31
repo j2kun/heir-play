@@ -14,7 +14,7 @@ In Jupyter:
 %load_ext heir_play
 ```
 
-```python
+```mlir
 %%heir_opt --convert-if-to-select --canonicalize
 
 func.func @secret_condition_with_non_secret_int(%inp: i16, %cond: !secret.secret<i1>) -> !secret.secret<i16> {
@@ -32,3 +32,19 @@ func.func @secret_condition_with_non_secret_int(%inp: i16, %cond: !secret.secret
 }
 ```
 
+The cell should output something similar to
+
+```mlir
+Running heir-opt...
+module {
+  func.func @secret_condition_with_non_secret_int(%arg0: i16, %arg1: !secret.secret<i1>) -> !secret.secret<i16> {
+    %0 = arith.addi %arg0, %arg0 : i16
+    %1 = secret.generic ins(%arg1 : !secret.secret<i1>) {
+    ^bb0(%arg2: i1):
+      %2 = arith.select %arg2, %0, %arg0 : i16
+      secret.yield %2 : i16
+    } -> !secret.secret<i16>
+    return %1 : !secret.secret<i16>
+  }
+}
+```
