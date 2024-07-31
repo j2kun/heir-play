@@ -5,4 +5,6 @@ from .heir_opt import load_nightly
 from .heir_opt import HeirOptMagic
 
 def load_ipython_extension(ipython):
-    ipython.register_magics(HeirOptMagic)
+    binary_path = load_nightly()
+    magic = HeirOptMagic(ipython, binary_path=str(binary_path))
+    ipython.register_magics(magic)

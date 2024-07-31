@@ -1,3 +1,4 @@
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -28,3 +29,8 @@ dmypy.json
 
 # pytype static type analyzer
 .pytype/
+
+# Jupyter
+.ipynb_checkpoints/
+# loaded by heir_play extension
+heir-opt
