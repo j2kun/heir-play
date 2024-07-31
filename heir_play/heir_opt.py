@@ -63,9 +63,6 @@ class HeirOptMagic(Magics):
             line: The options to pass to heir-opt.
             cell: The input to pass to heir-opt.
         """
-        # something like this, with input redirection
-        # heir-opt $line < $cell
-        # using subprocess
         print("Running heir-opt...")
         completed_process = subprocess.run(
             [self.binary_path, line], input=cell, text=True
@@ -76,4 +73,3 @@ class HeirOptMagic(Magics):
             return
         output = completed_process.stdout
         print(output)
-        return output
