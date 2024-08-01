@@ -66,7 +66,9 @@ class HeirOptMagic(Magics):
         """
         print("Running heir-opt...")
         completed_process = subprocess.run(
-            [self.binary_path] + shlex.split(line), input=cell, text=True
+            [os.path.abspath(self.binary_path)] + shlex.split(line),
+            input=cell,
+            text=True,
         )
         if completed_process.returncode != 0:
             print("Error running heir-opt")
