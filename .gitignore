@@ -34,3 +34,4 @@ dmypy.json
 .ipynb_checkpoints/
 # loaded by heir_play extension
 heir-opt
+heir-translate
